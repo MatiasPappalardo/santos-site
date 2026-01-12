@@ -234,8 +234,7 @@
       border-radius: 12px;
       overflow: hidden;
       background:
-        linear-gradient(to right, rgba(7,75,121,0.9), rgba(7,75,121,0.4)),
-        url('banner-santos.jpg') center/cover no-repeat;
+        linear-gradient(to right, rgba(7,75,121,0.92), rgba(7,75,121,0.6));
       min-height: 230px;
       display: flex;
       align-items: center;
@@ -246,14 +245,6 @@
     .banner-content {
       padding: 20px 24px;
       max-width: 420px;
-    }
-
-    .banner-logo {
-      width: 150px;
-      max-width: 55%;
-      height: auto;
-      margin-bottom: 10px;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
     }
 
     .banner-tag {
@@ -312,6 +303,24 @@
     }
 
     @media (max-width: 720px) {
+.banner-side {
+      margin-left: auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .banner-logo-img {
+      width: 200px;
+      max-width: 40vw;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+      background: rgba(255,255,255,0.08);
+      padding: 10px;
+    }
+
       .banner-box {
         min-height: 200px;
       }
@@ -658,7 +667,6 @@
     <div class="main-banner">
       <div class="banner-box">
         <div class="banner-content">
-        <img class="banner-logo" src="https://raw.githubusercontent.com/MatiasPappalardo/santos-site/main/santos.png" alt="Logo Santos Ferretería">
           <div class="banner-tag">Verano · proyectos · hogar y obra</div>
           <h2 class="banner-title">Todo lo que necesitás para tu ferretería de confianza</h2>
           <p class="banner-sub">
