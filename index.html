@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Santos Ferretería</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Santos Ferretería - Herramientas y materiales. Lunes a sábado de 09:00 a 19:00 hs. Avenida Andalién 350, sector Villa Cap, Concepción." />
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-dark: #074b79;
+      --blue-main: #0a72b8;
+      --blue-soft: #e5f1fb;
+      --accent: #00c853;
+      --text-main: #1b2733;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f4f6fb;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* TOP INFO BAR */
+    .top-info {
+      background: var(--blue-dark);
+      color: #ffffff;
+      font-size: 0.8rem;
+    }
+
+    .top-info-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .top-info span {
+      opacity: 0.9;
+    }
+
+    /* HEADER PRINCIPAL */
+    .main-header {
+      background: #ffffff;
+      border-bottom: 1px solid #dde4f0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+
+    .main-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1.4fr) auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-box img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text h1 {
+      font-family: "Oswald", sans-serif;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+
+    .logo-text span {
+      display: block;
+      font-family: "Oswald", sans-serif;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      color: #4f6379;
+    }
+
+    /* Buscador */
+    .search-box {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: #f1f5fb;
+      border-radius: 999px;
+      padding: 3px;
+      border: 1px solid #d2dbe8;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .search-box button {
+      border: none;
+      border-radius: 999px;
+      padding: 8px 16px;
+      background: var(--blue-main);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 0.82rem;
+      color: #4f6379;
+      line-height: 1.4;
+    }
+
+    .header-right strong {
+      display: block;
+      color: var(--blue-dark);
+    }
+
+    @media (max-width: 900px) {
+      .main-header-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .logo-box {
+        justify-content: center;
+      }
+      .header-right {
+        text-align: center;
+      }
+    }
+
+    /* NAV CATEGORÍAS */
+    .nav-strip {
+      background: var(--blue-main);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      overflow-x: auto;
+    }
+
+    .nav-all {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.7);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      font-size: 0.84rem;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      opacity: 0.96;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* BANNER PRINCIPAL FULL WIDTH */
+    .main-banner-wrap {
+      background: #ffffff;
+      border-bottom: 1px solid #dde4f0;
+    }
+
+    .main-banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 16px 22px;
+    }
+
+    .banner-box {
+      border-radius: 12px;
+      overflow: hidden;
+      background:
+        linear-gradient(to right, rgba(7,75,121,0.9), rgba(7,75,121,0.4)),
+        url('banner-santos.jpg') center/cover no-repeat;
+      min-height: 230px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      color: #ffffff;
+    }
+
+    .banner-content {
+      padding: 20px 24px;
+      max-width: 420px;
+    }
+
+    .banner-tag {
+      font-family: "Oswald", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      margin-bottom: 6px;
+      opacity: 0.9;
+    }
+
+    .banner-title {
+      font-family: "Oswald", sans-serif;
+      font-size: 1.9rem;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .banner-sub {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      opacity: 0.96;
+    }
+
+    .banner-cta {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+
+    .banner-cta span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+    }
+
+    .banner-note {
+      position: absolute;
+      right: 10px;
+      bottom: 8px;
+      font-size: 0.78rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 720px) {
+      .banner-box {
+        min-height: 200px;
+      }
+      .banner-title {
+        font-size: 1.5rem;
+      }
+      .banner-note {
+        display: none;
+      }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      flex: 1;
+      padding: 22px 0 32px;
+    }
+
+    .info-grid {
+      max-width: 1200px;
+      margin: 0 auto 26px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #e1e7f0;
+      margin-bottom: 10px;
+    }
+
+    .info-title {
+      font-family: "Oswald", sans-serif;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+
+    .info-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .info-text strong {
+      font-weight: 600;
+    }
+
+    .map-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #e1e7f0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .map-card-header {
+      padding: 10px 14px;
+      border-bottom: 1px solid #dde4f0;
+      font-family: "Oswald", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.85rem;
+      color: var(--blue-dark);
+    }
+
+    .map-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      min-height: 230px;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* WHATSAPP FLOTANTE */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 999;
+      text-decoration: none;
+    }
+
+    .whatsapp-bubble {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.8rem;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .whatsapp-float:hover .whatsapp-bubble {
+      background: #20b457;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.6);
+    }
+
+    .whatsapp-label {
+      display: none;
+    }
+
+    @media (min-width: 720px) {
+      .whatsapp-label {
+        display: inline-block;
+        position: relative;
+        right: 4px;
+        margin-right: 10px;
+        padding: 8px 12px;
+        background: rgba(0,0,0,0.8);
+        color: #ffffff;
+        border-radius: 999px;
+        font-size: 0.84rem;
+        white-space: nowrap;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background: #021d34;
+      padding: 24px 16px 12px;
+      color: #e4f2ff;
+      font-size: 0.85rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px 36px;
+      margin-bottom: 18px;
+    }
+
+    .footer-title {
+      font-family: "Oswald", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-list {
+      list-style: none;
+    }
+
+    .footer-list li {
+      margin-bottom: 4px;
+    }
+
+    .footer-note {
+      font-size: 0.8rem;
+      opacity: 0.85;
+      margin-top: 6px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.78rem;
+      opacity: 0.9;
+    }
+
+
+
+    /* BANNERS POR CATEGORÍA */
+    .category-banners {
+      max-width: 1200px;
+      margin: 24px auto 12px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 900px) {
+      .category-banners {
+        gap: 18px;
+      }
+    }
+
+    .cat-banner {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      min-height: 210px;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    }
+
+    .cat-banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 16px 20px;
+    }
+
+    .cat-banner-label {
+      font-family: "Oswald", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+
+    .cat-banner-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+    }
+
+    .cat-banner-note {
+      position: absolute;
+      right: 14px;
+      bottom: 8px;
+      font-size: 0.78rem;
+      opacity: 0.85;
+    }
+
+    .cat-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(7,75,121,0.92), rgba(7,75,121,0.4));
+      z-index: 1;
+    }
+
+    .cat-banner-img-construccion {
+      background: url('banner-construccion.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-he {
+      background: url('banner-herramientas-electricas.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-hm {
+      background: url('banner-herramientas-manuales.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-electricidad {
+      background: url('banner-electricidad.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-pintura {
+      background: url('banner-pintura.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-hogar {
+      background: url('banner-hogar-jardin.jpg') center/cover no-repeat, #074b79;
+    }
+
+    .cat-banner-img-oferta {
+      background: url('banner-oferta-dia.jpg') center/cover no-repeat, #074b79;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <div class="top-info">
+    <div class="top-info-inner">
+      <span>Empresa ferretera de barrio · Atención cercana en Villa Cap</span>
+      <span>Lunes a sábado 09:00 a 19:00 hs · Avenida Andalién 350 · Concepción</span>
+    </div>
+  </div>
+
+  <!-- HEADER PRINCIPAL -->
+  <header class="main-header">
+    <div class="main-header-inner">
+      <div class="logo-box">
+        <img src="logo-santos-ferreteria.png" alt="Logo Santos Ferretería">
+        <div class="logo-text">
+          <h1>SANTOS</h1>
+          <span>FERRETERÍA</span>
+        </div>
+      </div>
+
+      <form class="search-box" action="#" method="get">
+        <input type="text" name="q" placeholder="Buscar herramientas, materiales o categorías..." />
+        <button type="submit">Buscar</button>
+      </form>
+
+      <div class="header-right">
+        <strong>Contacto rápido</strong>
+        Tel: 41 267 4125<br>
+        Villa Cap, Concepción
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV CATEGORÍAS -->
+  <nav class="nav-strip">
+    <div class="nav-inner">
+      <div class="nav-all">Todas las categorías</div>
+      <div class="nav-links">
+        <a href="#">Construcción</a>
+        <a href="#">Herramientas eléctricas</a>
+        <a href="#">Herramientas manuales</a>
+        <a href="#">Electricidad</a>
+        <a href="#">Pintura</a>
+        <a href="#">Hogar &amp; Jardín</a>
+        <a href="#">Oferta del día</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BANNER PRINCIPAL TIPO E-COMMERCE -->
+  <section class="main-banner-wrap">
+    <div class="main-banner">
+      <div class="banner-box">
+        <div class="banner-content">
+          <div class="banner-tag">Verano · proyectos · hogar y obra</div>
+          <h2 class="banner-title">Todo lo que necesitás para tu ferretería de confianza</h2>
+          <p class="banner-sub">
+            Próximamente podés destacar tus ofertas principales acá. Por ahora, usá este espacio
+            como banner principal para Santos Ferretería.
+          </p>
+          <a
+            class="banner-cta"
+            href="https://wa.me/56977659954?text=Hola%20Santos%20Ferreter%C3%ADa%20quer%C3%ADa%20saber%20sobre"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">W</span>
+            <span>Consultar por WhatsApp</span>
+          </a>
+        </div>
+        <div class="banner-note">Reemplazá el fondo cargando tu imagen como <strong>banner-santos.jpg</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNERS POR CATEGORÍA -->
+  <section class="category-banners">
+    <article class="cat-banner cat-banner-img-construccion">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Construcción</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-construccion.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-he">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Herramientas eléctricas</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-herramientas-electricas.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-hm">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Herramientas manuales</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-herramientas-manuales.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-electricidad">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Electricidad</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-electricidad.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-pintura">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Pintura</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-pintura.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-hogar">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Hogar &amp; Jardín</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-hogar-jardin.jpg</div>
+    </article>
+
+    <article class="cat-banner cat-banner-img-oferta">
+      <div class="cat-banner-content">
+        <div class="cat-banner-label">Categoría</div>
+        <div class="cat-banner-title">Oferta del día</div>
+      </div>
+      <div class="cat-banner-note">Imagen: banner-oferta-dia.jpg</div>
+    </article>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <section class="info-grid">
+      <div>
+        <div class="info-card">
+          <div class="info-title">Horarios</div>
+          <div class="info-text">
+            <strong>Lunes a sábado:</strong> 09:00 a 19:00 hs
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-title">Dirección</div>
+          <div class="info-text">
+            <strong>Avenida Andalién 350</strong><br>
+            Sector Villa Cap, Concepción, Chile
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-title">Teléfonos</div>
+          <div class="info-text">
+            Fijo: <strong>41 267 4125</strong><br>
+            WhatsApp: <strong>+56 9 7765 9954</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <div class="map-card-header">Cómo llegar</div>
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=Avenida+Andali%C3%A9n+350,+Concepci%C3%B3n,+Chile&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/56977659954?text=Hola%20Santos%20Ferreter%C3%ADa%20quer%C3%ADa%20saber%20sobre"
+    target="_blank"
+    rel="noopener"
+    aria-label="Escribir por WhatsApp a Santos Ferretería"
+  >
+    <span class="whatsapp-label">¿Tenés una consulta? Escribinos</span>
+    <span class="whatsapp-bubble">W</span>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Contacto</div>
+          <ul class="footer-list">
+            <li>Avenida Andalién 350</li>
+            <li>Sector Villa Cap, Concepción</li>
+            <li>Tel: 41 267 4125</li>
+            <li>WhatsApp: +56 9 7765 9954</li>
+            <li>Horario: lun a sáb · 09:00 a 19:00 hs</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Categorías</div>
+          <ul class="footer-list">
+            <li>Construcción</li>
+            <li>Electricidad</li>
+            <li>Pintura</li>
+            <li>Herramientas</li>
+            <li>Ferretería en general</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-title">Santos Ferretería</div>
+          <ul class="footer-list">
+            <li>Ferretería de barrio en Villa Cap</li>
+            <li>Atención a vecinos y maestros</li>
+            <li>Próximamente más servicios online</li>
+          </ul>
+          <div class="footer-note">
+            Encontranos también en Google como <strong>"Santos Ferretería Andalién 350"</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Santos Ferretería. Todos los derechos reservados.</span>
+        <span>Concepción · Chile</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
